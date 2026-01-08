@@ -1,5 +1,15 @@
 #calendar{
-    height: 50rem;
+    height: 45rem;
     width: 95%;
     margin: auto;
+}
+
+footer div{
+    border-top: solid 1px gray;
+    margin-top: 1rem;
+    padding-left: 1rem;
+}
+
+p.secaoTitulo{
+    font-weight: bold;
 }
