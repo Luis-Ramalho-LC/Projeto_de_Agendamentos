@@ -8,7 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
           center: 0,
           right: 'title'
           },
-          events: 'eventos.json'
+          events: 'agendamentos.json'
         })
         calendar.render()
       })
+
+fetch('servicos.json', { method: 'GET' })
+.then(function(resposta){ resposta.json()
+  .then(function(verServicos){ verServicos.forEach(function(servico){
+    document.getElementById("TiposDeServiços").innerHTML += "<div>" + servico.nome
+  })
+ }) 
+})
+
+fetch('servicos.json', {
+  method: "POST",
+  body: JSON.stringify(novoServico)
+})
