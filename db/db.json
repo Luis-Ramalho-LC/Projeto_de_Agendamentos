@@ -1,0 +1,25 @@
+{
+  "agendamentos": [
+    {
+      "title": "teste",
+      "start": "2026-01-21T10:00:00",
+      "end": "2026-01-21T11:30:00",
+      "id": "1",
+      "allDay": false
+    },
+    {
+      "title": "teste2",
+      "start": "2026-01-22",
+      "allDay": true,
+      "id": "17b4"
+    }
+  ],
+  "servicos": [
+    {
+      "id": "83c5",
+      "nomeDoServico": "cabelo",
+      "tempoGastoServico": "40",
+      "precoDoServico": "60"
+    }
+  ]
+}
