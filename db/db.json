@@ -17,9 +17,21 @@
   "servicos": [
     {
       "id": "83c5",
-      "nomeDoServico": "cabelo",
+      "nomeDoServico": "Cabelo",
       "tempoGastoServico": "40",
       "precoDoServico": "60"
+    },
+    {
+      "id": "20b4",
+      "nomeDoServico": "unha",
+      "tempoGastoServico": "40",
+      "precoDoServico": "50"
+    },
+    {
+      "id": "4740",
+      "nomeDoServico": "teste2",
+      "tempoGastoServico": "10",
+      "precoDoServico": "25"
     }
   ]
 }
