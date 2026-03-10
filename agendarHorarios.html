@@ -48,13 +48,20 @@
   </header>
   <main>
     <div>
+      <h1>Novo Agendamento</h1>
       <input id="inputNomeCliente" class="form-control form-control-lg" type="text" placeholder="Nome do Cliente" aria-label=".form-control-lg example">
       <Select name="SelectServico" id="SelecaoDeServico"></Select>
       <label for="inputData">Selecione o dia para o agendamento:</label>
       <input type="date" id="inputData">
-      <label for="inputHorario">Selecione o horário para o agendamento:</label>
+      <label for="inputHorario">Defina o horário para o agendamento:</label>
       <input type="time" id="inputHorario">
+      <label for="inputFimHorario">Defina o horário de Término:</label>
+      <input type="time" id="inputFimHorario">
       <button class="btn btn-success" type="submit" onclick="salvarNovoAgendamento()">Salvar</button>
+    </div>
+    <div>
+      <h1>Todos os Agendamentos</h1>
+      <div id="mostrarAgendamentos"></div>
     </div>
   </main>
   <footer>

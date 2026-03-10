@@ -1,0 +1,31 @@
+{
+  "servicos": [
+    {
+      "id": "b60c",
+      "nomeDoServico": "teste",
+      "tempoGastoServico": "40",
+      "precoDoServico": "50"
+    },
+    {
+      "id": "f1f9",
+      "nomeDoServico": "cabelo",
+      "tempoGastoServico": "50",
+      "precoDoServico": "80"
+    }
+  ],
+  "eventos": [
+    {
+      "id": "ddf3",
+      "title": "testando DENOVO",
+      "tipoDoServicoAgendado": "teste",
+      "start": "2026-03-10T15:00:00",
+      "end": "2026-03-10T15:30:00"
+    },
+    {
+      "id": "feeb",
+      "title": "Testeluis",
+      "start": "2026-03-10T12:30:00",
+      "end": "2026-03-10T13:00:00"
+    }
+  ]
+}
