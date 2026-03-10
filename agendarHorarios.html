@@ -39,7 +39,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <input id="SearchHorarios" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
@@ -47,7 +47,15 @@
     </nav>
   </header>
   <main>
-
+    <div>
+      <input id="inputNomeCliente" class="form-control form-control-lg" type="text" placeholder="Nome do Cliente" aria-label=".form-control-lg example">
+      <Select name="SelectServico" id="SelecaoDeServico"></Select>
+      <label for="inputData">Selecione o dia para o agendamento:</label>
+      <input type="date" id="inputData">
+      <label for="inputHorario">Selecione o horário para o agendamento:</label>
+      <input type="time" id="inputHorario">
+      <button class="btn btn-success" type="submit" onclick="salvarNovoAgendamento()">Salvar</button>
+    </div>
   </main>
   <footer>
     <p>RODAPE</p>
