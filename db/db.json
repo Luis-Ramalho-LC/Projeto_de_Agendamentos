@@ -11,21 +11,41 @@
       "nomeDoServico": "cabelo",
       "tempoGastoServico": "50",
       "precoDoServico": "80"
+    },
+    {
+      "id": "a95f",
+      "nomeDoServico": "Unha",
+      "tempoGastoServico": "30",
+      "precoDoServico": "80"
+    },
+    {
+      "id": "4219",
+      "nomeDoServico": "Sobrancelha",
+      "tempoGastoServico": "20",
+      "precoDoServico": "30"
     }
   ],
   "eventos": [
     {
-      "id": "ddf3",
-      "title": "testando DENOVO",
-      "tipoDoServicoAgendado": "teste",
-      "start": "2026-03-10T15:00:00",
-      "end": "2026-03-10T15:30:00"
+      "id": "b714",
+      "title": "teste1",
+      "start": "2026-03-11T16:00:00",
+      "end": "2026-03-11T16:30:00",
+      "tipoDoServicoAgendado": "cabelo"
     },
     {
-      "id": "feeb",
-      "title": "Testeluis",
-      "start": "2026-03-10T12:30:00",
-      "end": "2026-03-10T13:00:00"
+      "id": "4565",
+      "title": "Luis",
+      "tipoDoServicoAgendado": "Unha",
+      "start": "2026-03-11T15:00:00",
+      "end": "2026-03-11T15:30:00"
+    },
+    {
+      "id": "8af2",
+      "title": "testeLuis@",
+      "tipoDoServicoAgendado": "Sobrancelha",
+      "start": "2026-03-11T14:00:00",
+      "end": "2026-03-11T15:00:00"
     }
   ]
 }

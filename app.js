@@ -121,12 +121,17 @@ fetch(APIEventosURL, {method: 'GET'})
 .then(response => response.json())
 .then(infoAgendamentos => {
   infoAgendamentos.forEach(function(agendamentos){
+    var comeco = agendamentos.start.split("T")
+    var diaFormatado = comeco[0].split("-")
+    var fim = agendamentos.end.split("T")
+
     document.getElementById('mostrarAgendamentos').innerHTML += `
       <div class='card m-2'>
         <div class='card-header'>Nome do Cliente: ${agendamentos.title}</div>
           <div class='card-body'>
-            <h5 class='card-title'>Horário De Começo: ${agendamentos.start}</h5>
-            <p class='card-text'>Horário Final: ${agendamentos.end}</p>
+            <h5 class='card-title'>Dia: ${diaFormatado[2] +"/"+diaFormatado[1] +"/"+ diaFormatado[0]}</h5>
+            <p class='card-text'>Horário De Começo: ${comeco[1].slice(0, 5)}</p>
+            <p class='card-text'>Horário Final: ${fim[1].slice(0, 5)}</p>
             <p class='card-text'>Tipo do Serviço: ${agendamentos.tipoDoServicoAgendado}</p>
             <button class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#modal${agendamentos.id}">Atualizar</button>
             <button class='btn btn-danger' id="${agendamentos.id}" onclick="deletarAgendamento(this.id)">Deletar</button>
@@ -145,17 +150,13 @@ fetch(APIEventosURL, {method: 'GET'})
                 <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
                 <input id="atualizarNomeAgendamentos${agendamentos.id}" type="text" class="form-control" aria-label="Sizing example input" value="${agendamentos.title}" aria-describedby="inputGroup-sizing-default">
               </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Começo</span>
-                <input id="atualizarComeco${agendamentos.id}" type="text" class="form-control" aria-label="Sizing example input" value="${agendamentos.start}" aria-describedby="inputGroup-sizing-default">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text">Fim</span>
-                <input id="atualizarFim${agendamentos.id}" type="text" class="form-control" value="${agendamentos.end}">
-              </div>
-              <div>
-                <select name="TipoDeServico" id="TipoDeServico"></select>
-              </div>
+              <label for="inputData${agendamentos.id}">Data: </label>
+              <input type="date" id="inputData${agendamentos.id}" value="${comeco[0]}">
+              <label for="inputHorario${agendamentos.id}">Horário Inicial: </label>
+              <input type="time" id="inputHorario${agendamentos.id}" value="${comeco[1]}">
+              <label for="inputFimHorario${agendamentos.id}">Horário Final: </label>
+              <input type="time" id="inputFimHorario${agendamentos.id}" value="${fim[1]}">
+              <Select name="SelectServico" id="SelecaoDeServico${agendamentos.id}"></Select>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -165,6 +166,19 @@ fetch(APIEventosURL, {method: 'GET'})
         </div>
       </div>
     `
+
+    function preencherServicosDoModal(){
+      fetch(APIServicoUrl, {method: 'GET'})
+      .then(response => response.json())
+      .then(preencherServicos => {
+        preencherServicos.forEach(function(servico){
+          document.getElementById(`SelecaoDeServico${agendamentos.id}`).innerHTML += `
+          <option id="option${servico.nomeDoServico + agendamentos.id}" value="${servico.nomeDoServico}">${servico.nomeDoServico}</option>
+          `
+        })
+      })
+    }
+    preencherServicosDoModal()
   })
 })
 
@@ -192,10 +206,15 @@ function salvarNovoAgendamento(){
 function atualizarAgendamento(id){
   var agendamentoAtualizado = []
   const title = document.getElementById(`atualizarNomeAgendamentos${id}`).value
-  const start = document.getElementById(`atualizarComeco${id}`).value
-  const end = document.getElementById(`atualizarFim${id}`).value
+  const data = document.getElementById(`inputData${id}`).value 
+  var horarioComeco = document.getElementById(`inputHorario${id}`).value
+  var horarioFinal = document.getElementById(`inputFimHorario${id}`).value
+  const tipoDoServicoAgendado = document.getElementById(`SelecaoDeServico${id}`).value
+
+  start = data + "T" + horarioComeco
+  end = data + "T" + horarioFinal 
   
-  agendamentoAtualizado = {id, title, start, end}
+  agendamentoAtualizado = {id, title, start, end, tipoDoServicoAgendado}
 
   fetch(`${APIEventosURL}/${id}`, {
     method: 'PUT',
